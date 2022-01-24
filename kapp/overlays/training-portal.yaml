@@ -3,7 +3,16 @@
 
 #@overlay/match by=overlay.subset({"kind": "TrainingPortal", "metadata": {"name": "waas-mvp"}}), expects="1+"
 ---
+metadata:
+  #@overlay/match missing_ok=True
+  annotations:
+    kapp.k14s.io/update-strategy: always-replace
+
+#@ if hasattr(data, "values") && hasattr(data.values, "password"):
+#@overlay/match by=overlay.subset({"kind": "TrainingPortal", "metadata": {"name": "waas-mvp"}}), expects="1+"
+---
 spec:
   #@overlay/match missing_ok=True
   portal:
-    password: #@ data.values
+    password: #@ data.values.password
+#@ end
