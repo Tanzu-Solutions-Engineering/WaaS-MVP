@@ -6,4 +6,4 @@
 spec:
   #@overlay/match missing_ok=True
   portal:
-    password: #@ data.values.password
+    password: #@ data.values
