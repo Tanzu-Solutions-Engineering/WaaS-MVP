@@ -1,71 +1,57 @@
-This is an example page for exercises to be done for the workshop. You would remove this page, replace it with your own and then adjust the `workshop.yaml` and `modules.yaml` file to list your pages instead.
+This exercise will verify your local Harbor is working and get you familiar with it.  
 
-In this example the pages which make up the core of the workshop content are placed in a sub directory. This is only done as a suggestion. You can place all pages at the same directory level if you wish.
+You can access the Harbor GUI via a web browser locally at: `https://core.harbor.domain` 
 
-Included below are some tests and examples of page formatting using Markdown.
 
-#### Standard code block
+The default credentials are:
 
+UN: `admin`
+
+PW: `Harbor12345`
+
+##
+
+
+
+## In Harbor create a project named test 🔧
+
+Go to Projects and click the + New Project button.
+
+Set Project Name to `test`.
+
+Set Access Level to Public (unless you intend to make it private and require login).
+
+Leave Storage Quota at the default -1 GB.
+
+
+
+## Login to your local Harbor with Docker 🔧
 ```
-echo "standard code block"
-```
-
-#### Click text to execute
-
-```execute
-echo "execute in terminal 1"
-```
-
-#### Click text to execute (with target)
-
-```execute-1
-echo "execute in terminal 1"
-```
-
-```execute-2
-echo "execute in terminal 2"
-```
-
-```execute-all
-echo "execute in all terminals"
-```
-
-#### Click text to copy
-
-```copy
-echo "copy text to buffer"
+docker login core.harbor.domain
 ```
 
-#### Click text to copy (and edit)
 
-```copy-and-edit
-echo "copy text to buffer"
+Pull down a test image for this project 
+```
+docker pull cmccarth/ticket-function
 ```
 
-#### Interrupt command
 
-```execute
-sleep 3600
+
+Tag an image for this project 
+```
+docker tag cmccarth/ticket-function core.harbor.domain/test/ticket-function
 ```
 
-```execute
-<ctrl-c>
+
+Push an image to this project 
+```
+docker push core.harbor.domain/test/ticket-function
 ```
 
-#### Variable interpolation
 
-workshop_name: {{ workshop_name }}
+## Verify the image is in Harbor by viewing the repositories for the test project 🔧
 
-session_namespace: {{ session_namespace }}
+Go to Projects and select the test project > then the ticket-function repository.
 
-workshop_namespace: {{ workshop_namespace }}
-
-training_portal: {{ training_portal }}
-
-ingress_domain: {{ ingress_domain }}
-
-ingress_protocol: {{ ingress_protocol }}
-
-#### Web site links
-
-[External](https://github.com/eduk8s)
+You should now see your image present.
