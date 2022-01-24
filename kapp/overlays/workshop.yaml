@@ -1,8 +1,0 @@
-#@ load("@ytt:overlay", "overlay")
-
-#@overlay/match by=overlay.subset({"kind": "Workshop", "metadata": {"name": "waas-mvp"}}), expects="1+"
----
-metadata:
-  #@overlay/match missing_ok=True
-  annotations:
-    kapp.k14s.io/update-strategy: always-replace
