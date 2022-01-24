@@ -8,7 +8,7 @@ metadata:
   annotations:
     kapp.k14s.io/update-strategy: always-replace
 
-#@ if hasattr(data, "values") && hasattr(data.values, "password"):
+#@ if hasattr(data, "values") and hasattr(data.values, "password"):
 #@overlay/match by=overlay.subset({"kind": "TrainingPortal", "metadata": {"name": "waas-mvp"}}), expects="1+"
 ---
 spec:
