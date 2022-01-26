@@ -13,6 +13,15 @@ PW: `{{ ENV_HARBOR_PASSWORD }}`
 ```terminal:execute
 command: docker login harbor.{{ ingress_domain }}
 ```
+Now, enter the admin username
+```terminal:execute
+command: admin
+```
+
+Next, enter the admin password
+```terminal:execute
+command: {{ ENV_HARBOR_PASSWORD }}
+```
 
 Pull down a test image for this project 
 ```terminal:execute
