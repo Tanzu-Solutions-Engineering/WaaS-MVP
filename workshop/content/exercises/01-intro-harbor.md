@@ -7,7 +7,7 @@ url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}
 
 If you need to login, use the following credentials:
 UN: `admin`
-PW: `Harbor12345`
+PW: `{{ ENV_HARBOR_PASSWORD }}`
 
 ##
 

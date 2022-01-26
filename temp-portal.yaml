@@ -1,0 +1,14 @@
+apiVersion: training.eduk8s.io/v1alpha1
+kind: TrainingPortal
+metadata:
+  annotations:
+    kapp.k14s.io/update-strategy: always-replace
+  name: waas-mvp
+spec:
+  portal:
+    password: xq5rHWqka3b8wBrb
+  workshops:
+  - name: waas-mvp
+    capacity: 2
+    expires: 60m
+    orphaned: 5m

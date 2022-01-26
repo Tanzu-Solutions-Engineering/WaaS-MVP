@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data")
+---
 apiVersion: training.eduk8s.io/v1alpha2
 kind: Workshop
 metadata:
@@ -10,9 +12,12 @@ spec:
   duration: 15m
   url: https://github.com/Tanzu-Solutions-Engineering/WaaS-MVP
   content:
-    #image: quay.io/eduk8s/lab-markdown-sample:master
+    #!image: quay.io/eduk8s/lab-markdown-sample:master
     files: github.com/Tanzu-Solutions-Engineering/WaaS-MVP?ref=main
   session:
+    env:
+    - name: HARBOR_PASSWORD
+      value: #@ data.values.harbor.adminPassword
     namespaces:
       budget: small
     applications:
