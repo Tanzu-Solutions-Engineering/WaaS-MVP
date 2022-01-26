@@ -23,3 +23,39 @@ spec:
         enabled: true
       editor:
         enabled: true
+    objects:
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      metadata:
+        name: e2e-user
+      rules:
+      - apiGroups: [ e2e.tanzu.vmware.com ]
+        resources: [ "*" ]
+        verbs: [ get, list, watch, create, delete, patch, update ]
+      - apiGroups: [ "*" ]
+        resources: [ "*" ]
+        verbs: [ get, list, watch ]
+      - apiGroups: [""]
+        resources: [ events ]
+        verbs: [ create ]
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      metadata:
+        name: e2e-user
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: Role
+        name: e2e-user
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(workshop_namespace)
+        name: $(service_account)
+    - apiVersion: e2e.tanzu.vmware.com/v1beta1
+      kind: HarborProject
+      metadata:
+        name: $(session_namespace)
+        annotations:
+          training.eduk8s.io/objects.crd.scope: Namespaced
+      spec:
+        name: $(session_namespace)
+

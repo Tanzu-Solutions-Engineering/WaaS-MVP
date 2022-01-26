@@ -1,12 +1,12 @@
 This exercise will verify your local Harbor is working and get you familiar with it.  
 
-You can access the Harbor GUI via a web browser locally at: `https://core.harbor.domain` 
+Open the Harbor UI to your project by clicking the link below.
+```dashboard:open-url
+url: https://harbor.{{ ingress_domain }}/harbor/projects/{{ harbor_project_id }}/repositories
+```
 
-
-The default credentials are:
-
+If you need to login, use the following credentials:
 UN: `admin`
-
 PW: `Harbor12345`
 
 ##
