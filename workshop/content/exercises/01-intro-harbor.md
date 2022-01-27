@@ -39,7 +39,12 @@ command: docker push harbor.{{ ingress_domain }}/{{session_namespace}}/test/tick
 ```
 
 ## Verify the image is in Harbor by viewing the repositories for the test project 🔧
+Go back to your Harbor tab in the browser, and and refresh the page.  You should now see a repository entry in the table view that has the suffix "test/ticket-function."  Click on this entry in the table.
 
-Go to Projects and select the test project > then the ticket-function repository.
+The next view shows your repository artifacts.  OCI images are uniquely identified by repository name, as well as a SHA256 value that is unique to each image version.  Additionally, images may be tagged with human readable values like "latest" to prevent having to refer to those long SHA256 values when you want to reference an image.
 
-You should now see your image present.
+Validate your image SHA value by first going back to the terminal session we executed the `docker push` in.  The output should show something like the following:
+
+![Docker output showing SHA256](/images/docker-push-output.png)
+
+Check the first 8 characters of the SHA in the output against the value shown in Harbor for that repository artifact.  Those characters should match.
