@@ -45,6 +45,6 @@ The next view shows your repository artifacts.  OCI images are uniquely identifi
 
 Validate your image SHA value by first going back to the terminal session we executed the `docker push` in.  The output should show something like the following:
 
-![Docker output showing SHA256](/images/docker-push-output.png)
+![Docker output showing SHA256](../images/docker-push-output.png)
 
 Check the first 8 characters of the SHA in the output against the value shown in Harbor for that repository artifact.  Those characters should match.
